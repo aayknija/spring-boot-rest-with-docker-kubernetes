@@ -1,0 +1,13 @@
+server:
+  port: 9090
+
+spring:
+  jpa:
+    generate-ddl : true
+  data:
+    mongodb:
+#      uri : MONGO_URL
+      database : cab_bookings
+      host: mongo
+      authenticationDatabase: admin
+

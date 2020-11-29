@@ -1,0 +1,19 @@
+
+// create application jar
+mvn clean verify
+
+// create docker image as defined in Dockerfile
+docker build -t cab-service .
+
+// create network
+docker network create in-cab-service
+
+//run mongo db as node
+docker run  --name=mongo --rm -p 27017:27017 --network=in-cab-service mongo
+
+docker run -d -p 27017:27017 --name=mongo mongo
+
+
+docker run --name=cab-service --rm --link=mongo -p 9090:9090  cab-service .
+// run application
+docker run --name=cab-service --rm --network=in-cab-service -p 9090:9090 -e MONGO=mongodb://mongo:27017/cab_bookings cab-service .

@@ -1,0 +1,12 @@
+server:
+  port: 9090
+
+spring:
+  jpa:
+    generate-ddl : true
+  data:
+    mongodb:
+      database : cab_bookings
+      host: localhost
+      authenticationDatabase: admin
+
